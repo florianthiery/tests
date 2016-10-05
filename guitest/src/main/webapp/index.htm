@@ -37,6 +37,7 @@
 			<input id="validate" checked="checked" type="checkbox">&nbsp;just validate
 			<br><br>
 			<b>username:</b>&nbsp;<input type="text" name="user" id="user" value="demo">
+			<b>vocabID:</b>&nbsp;<input type="text" name="vocab" id="user" value="6bcadbb1-80a0-4967-b21d-39e0d877e356">
 			<br><br>
 			<input value="Upload" type="submit">
         </form>
@@ -77,9 +78,10 @@
 		} else {
 			validator = false;
 		}
-		userVal = $("#user").val();
+		var userVal = $("#user").val();
+		var vocabVal = $("#vocab").val();
 		$.ajax({
-			url: "http://143.93.114.135/api/v1/importcsv/mode/" + mode + "/creator/" + userVal + "/validator/" + validator,
+			url: "http://143.93.114.135/api/v1/importcsv/mode/" + mode + "/creator/" + userVal + "/vocabulary/" + vocabVal + "/validator/" + validator,
 			type: 'POST',
 			data: formData,
 			async: false,
@@ -145,10 +147,7 @@
 				for (var key in output) {
 					if (key == "errors") {
 						errors = output[key];
-					} else if (key == "relationerrors") {
-						relationerrors = output[key];
 					} else if (key == "importedlabels") {
-					} else if (key == "importedrelations") {
 					} else if (key == "success") {
 					} else if (key == "warnings") {
 					} else {
@@ -156,7 +155,6 @@
 					}
 				}
 				html += "<center><b>errors: " + errors + "</b></center>";
-				html += "<center><b>relationerrors: " + relationerrors + "</b></center>";
 				html += "<center><br><b>error list</b> <br>" + error + "</center>";
 				document.getElementById("result").innerHTML = html;
 			}
@@ -172,10 +170,7 @@
 				for (var key in output) {
 					if (key == "errors") {
 						errors = output[key];
-					} else if (key == "relationerrors") {
-						relationerrors = output[key];
 					} else if (key == "importedlabels") {
-					} else if (key == "importedrelations") {
 					} else if (key == "success") {
 					} else if (key == "warnings") {
 					} else {
@@ -183,7 +178,6 @@
 					}
 				}
 				html += "<center><b>errors: " + errors + "</b></center>";
-				html += "<center><b>relationerrors: " + relationerrors + "</b></center>";
 				html += "<center><br><b>error list</b> <br>" + error + "</center>";
 				document.getElementById("result").innerHTML = html;
 			}
