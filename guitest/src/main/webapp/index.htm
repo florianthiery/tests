@@ -36,7 +36,7 @@
             <br><br>
             <input id="validate" checked="checked" type="checkbox">&nbsp;just validate
             <br><br>
-            <b>vocabID:</b>&nbsp;<input type="text" name="vocab" id="vocab" value="6bcadbb1-80a0-4967-b21d-39e0d877e356" size="35">
+            <b>vocabID:</b>&nbsp;<input type="text" name="vocab" id="vocab" value="" size="35">
             <br><br>
             <input value="Upload" type="submit">
         </form>
@@ -134,7 +134,7 @@
         progressbar.progressbar("value", 100);
         status = 0;
         var html = "";
-        if (output.success == "true") {
+        if (output.success) {
             html += "<center><h1 style='color:green'>OK!</h1></center><br>";
             document.getElementById("result").innerHTML = html;
         } else {
